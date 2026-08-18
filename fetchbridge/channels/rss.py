@@ -5,10 +5,10 @@ from __future__ import annotations
 
 import xml.etree.ElementTree as ET
 
-from reach_enterprise.backends.http import HttpBackend
-from reach_enterprise.base import Channel
-from reach_enterprise.config import Config
-from reach_enterprise.models import ComplianceInfo, FetchRequest, FetchResult
+from fetchbridge.backends.http import HttpBackend
+from fetchbridge.base import Channel
+from fetchbridge.config import Config
+from fetchbridge.models import ComplianceInfo, FetchRequest, FetchResult
 
 
 class RSSChannel(Channel):

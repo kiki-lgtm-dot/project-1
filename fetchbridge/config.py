@@ -3,7 +3,7 @@
 配置管理 —— 凭据绝不落盘明文。
 
 设计（对应方案第 6 节「凭据零明文」）：
-  - 密钥只从环境变量读取（REACH_*_TOKEN / REACH_*_KEY）
+  - 密钥只从环境变量读取（FETCHBRIDGE_*_TOKEN / FETCHBRIDGE_*_KEY）
   - 预留密钥系统（Vault/KMS）接口：SecretProvider 抽象，生产环境注入
   - 配置文件只存非敏感项（后端优先级、限频、域名白名单）
 """
@@ -16,7 +16,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Optional
 
-_CONFIG_DIR = Path.home() / ".reach-enterprise"
+_CONFIG_DIR = Path.home() / ".fetchbridge"
 _CONFIG_FILE = _CONFIG_DIR / "config.json"
 
 
@@ -44,8 +44,8 @@ class Config:
 
     # ── 密钥访问（永不落盘） ──────────────────────────
     def secret(self, platform: str) -> Optional[str]:
-        """按平台取密钥。例如 platform='github' → 读 REACH_GITHUB_TOKEN。"""
-        key = f"REACH_{platform.upper().replace('-', '_')}_TOKEN"
+        """按平台取密钥。例如 platform='github' → 读 FETCHBRIDGE_GITHUB_TOKEN。"""
+        key = f"FETCHBRIDGE_{platform.upper().replace('-', '_')}_TOKEN"
         return self.secrets.get(key)
 
     # ── 非敏感配置 ────────────────────────────────────

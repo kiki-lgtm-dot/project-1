@@ -6,8 +6,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
-from reach_enterprise.config import Config
-from reach_enterprise.models import FetchRequest, FetchResult, ProbeResult
+from fetchbridge.config import Config
+from fetchbridge.models import FetchRequest, FetchResult, ProbeResult
 
 # 后端分级：1=官方API（首选） 2=自研（次选） 3=开源工具（兜底，需单独法务评估）
 TIER_OFFICIAL = 1

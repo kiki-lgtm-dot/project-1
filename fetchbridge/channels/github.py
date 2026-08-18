@@ -3,8 +3,8 @@
 
 from __future__ import annotations
 
-from reach_enterprise.backends.github_api import GitHubApiBackend
-from reach_enterprise.base import Channel
+from fetchbridge.backends.github_api import GitHubApiBackend
+from fetchbridge.base import Channel
 
 
 class GitHubChannel(Channel):

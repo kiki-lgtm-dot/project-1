@@ -13,7 +13,7 @@ import re
 from dataclasses import dataclass
 from urllib.parse import urlparse
 
-from reach_enterprise.models import ComplianceInfo
+from fetchbridge.models import ComplianceInfo
 
 # 个人信息识别（占位实现：邮箱 + 大陆手机号）
 _EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")

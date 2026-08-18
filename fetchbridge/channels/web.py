@@ -7,12 +7,12 @@
 
 from __future__ import annotations
 
-from reach_enterprise.backends.http import HttpBackend
-from reach_enterprise.backends.jina import JinaReaderBackend
-from reach_enterprise.base import Channel
-from reach_enterprise.compliance import DomainPolicy, mark_personal_data
-from reach_enterprise.config import Config
-from reach_enterprise.models import FetchRequest, FetchResult
+from fetchbridge.backends.http import HttpBackend
+from fetchbridge.backends.jina import JinaReaderBackend
+from fetchbridge.base import Channel
+from fetchbridge.compliance import DomainPolicy, mark_personal_data
+from fetchbridge.config import Config
+from fetchbridge.models import FetchRequest, FetchResult
 
 
 class WebChannel(Channel):

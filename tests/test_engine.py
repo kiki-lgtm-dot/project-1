@@ -3,10 +3,10 @@
 
 import io
 
-from reach_enterprise.audit import scrub_url
-from reach_enterprise.config import Config
-from reach_enterprise.core import ReachEngine
-from reach_enterprise.models import FetchRequest
+from fetchbridge.audit import scrub_url
+from fetchbridge.config import Config
+from fetchbridge.core import FetchBridge
+from fetchbridge.models import FetchRequest
 
 
 def test_scrub_url_credentials():
@@ -15,17 +15,17 @@ def test_scrub_url_credentials():
 
 
 def test_fetch_unknown_url():
-    engine = ReachEngine(Config(), audit_stream=io.StringIO())
+    engine = FetchBridge(Config(), audit_stream=io.StringIO())
     result = engine.fetch(FetchRequest(url="not-a-url"))
     assert not result.ok
 
 
 def test_compliance_blocked_domain():
-    from reach_enterprise.channels.web import WebChannel
-    from reach_enterprise.compliance import DomainPolicy
+    from fetchbridge.channels.web import WebChannel
+    from fetchbridge.compliance import DomainPolicy
 
     ch = WebChannel(policy=DomainPolicy(deny=("blocked.com",)))
-    from reach_enterprise.models import FetchRequest, FetchResult
+    from fetchbridge.models import FetchRequest, FetchResult
     config = Config()
     result = ch.fetch(FetchRequest(url="https://blocked.com/x"), config)
     assert not result.ok
@@ -33,7 +33,7 @@ def test_compliance_blocked_domain():
 
 
 def test_personal_data_detection():
-    from reach_enterprise.compliance import detect_personal_data
+    from fetchbridge.compliance import detect_personal_data
     assert detect_personal_data("联系我 alice@example.com")
     assert detect_personal_data("电话 13812345678")
     assert not detect_personal_data("这是一段普通文本")
@@ -42,10 +42,10 @@ def test_personal_data_detection():
 def test_resolve_specific_channel_before_fallback():
     """github.com 的 URL 应匹配 github 渠道，而不是被通用 web 渠道抢走。"""
     import io
-    from reach_enterprise.core import ReachEngine
-    from reach_enterprise.config import Config
+    from fetchbridge.core import FetchBridge
+    from fetchbridge.config import Config
 
-    engine = ReachEngine(Config(), audit_stream=io.StringIO())
+    engine = FetchBridge(Config(), audit_stream=io.StringIO())
     ch = engine.resolve_channel(FetchRequest(url="https://github.com/psf/requests"))
     assert ch is not None
     assert ch.name == "github"

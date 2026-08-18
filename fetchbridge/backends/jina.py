@@ -9,9 +9,9 @@ from __future__ import annotations
 import urllib.parse
 import urllib.request
 
-from reach_enterprise.base import Backend, TIER_FALLBACK
-from reach_enterprise.config import Config
-from reach_enterprise.models import ComplianceInfo, FetchRequest, FetchResult, ProbeResult
+from fetchbridge.base import Backend, TIER_FALLBACK
+from fetchbridge.config import Config
+from fetchbridge.models import ComplianceInfo, FetchRequest, FetchResult, ProbeResult
 
 _ENDPOINT = "https://r.jina.ai/"
 
@@ -22,7 +22,7 @@ class JinaReaderBackend(Backend):
     source_type = "fallback"
 
     def probe(self, config: Config) -> ProbeResult:
-        req = urllib.request.Request(_ENDPOINT, headers={"User-Agent": "reach-enterprise/0.1"})
+        req = urllib.request.Request(_ENDPOINT, headers={"User-Agent": "fetchbridge/0.1"})
         try:
             with urllib.request.urlopen(req, timeout=5) as resp:
                 return ProbeResult("ok") if resp.status < 500 else ProbeResult("error", f"HTTP {resp.status}")
@@ -31,7 +31,7 @@ class JinaReaderBackend(Backend):
 
     def fetch(self, request: FetchRequest, config: Config) -> FetchResult:
         target = _ENDPOINT + urllib.parse.quote(request.url, safe="")
-        req = urllib.request.Request(target, headers={"User-Agent": "reach-enterprise/0.1"})
+        req = urllib.request.Request(target, headers={"User-Agent": "fetchbridge/0.1"})
         try:
             with urllib.request.urlopen(req, timeout=15) as resp:
                 text = resp.read().decode("utf-8", errors="replace")

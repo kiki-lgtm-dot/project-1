@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""ReachEngine —— 引擎入口：路由 + 抓取 + 审计 + 限频。"""
+"""FetchBridge —— 引擎入口：路由 + 抓取 + 审计 + 限频。"""
 
 from __future__ import annotations
 
@@ -7,14 +7,14 @@ import sys
 import time
 from typing import Optional
 
-from reach_enterprise.audit import audit_fetch, audit_route
-from reach_enterprise.channels import get_all_channels, get_channel
-from reach_enterprise.config import Config
-from reach_enterprise.models import FetchRequest, FetchResult
-from reach_enterprise.scheduler import RateLimiter
+from fetchbridge.audit import audit_fetch, audit_route
+from fetchbridge.channels import get_all_channels, get_channel
+from fetchbridge.config import Config
+from fetchbridge.models import FetchRequest, FetchResult
+from fetchbridge.scheduler import RateLimiter
 
 
-class ReachEngine:
+class FetchBridge:
     """统一数据获取入口。生产环境应注入 SecretProvider 与审计流。"""
 
     def __init__(self, config: Optional[Config] = None, audit_stream=None):

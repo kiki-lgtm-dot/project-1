@@ -2,7 +2,7 @@
 """GitHub 官方 REST API 后端（tier 1，首选）。
 
 合规：官方 API，遵守其速率限制与条款；无 Token 时走公开接口（60 次/小时）。
-Token 只从密钥系统（默认环境变量 REACH_GITHUB_TOKEN）读取，绝不落盘。
+Token 只从密钥系统（默认环境变量 FETCHBRIDGE_GITHUB_TOKEN）读取，绝不落盘。
 """
 
 from __future__ import annotations
@@ -10,9 +10,9 @@ from __future__ import annotations
 import json
 import urllib.request
 
-from reach_enterprise.base import Backend, TIER_OFFICIAL
-from reach_enterprise.config import Config
-from reach_enterprise.models import ComplianceInfo, FetchRequest, FetchResult, ProbeResult
+from fetchbridge.base import Backend, TIER_OFFICIAL
+from fetchbridge.config import Config
+from fetchbridge.models import ComplianceInfo, FetchRequest, FetchResult, ProbeResult
 
 _API = "https://api.github.com"
 
@@ -25,7 +25,7 @@ class GitHubApiBackend(Backend):
     def _headers(self, config: Config) -> dict:
         headers = {
             "Accept": "application/vnd.github+json",
-            "User-Agent": "reach-enterprise",
+            "User-Agent": "fetchbridge",
         }
         token = config.secret("github")
         if token:

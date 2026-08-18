@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """渠道与路由核心测试。"""
 
-from reach_enterprise.channels import get_all_channels
-from reach_enterprise.channels.github import GitHubChannel
-from reach_enterprise.channels.web import WebChannel
-from reach_enterprise.config import Config
+from fetchbridge.channels import get_all_channels
+from fetchbridge.channels.github import GitHubChannel
+from fetchbridge.channels.web import WebChannel
+from fetchbridge.config import Config
 
 
 def test_all_channels_registered():
@@ -24,7 +24,7 @@ def test_github_can_handle():
 
 
 def test_github_url_to_api():
-    from reach_enterprise.backends.github_api import GitHubApiBackend
+    from fetchbridge.backends.github_api import GitHubApiBackend
     assert GitHubApiBackend._to_api_url(
         "https://github.com/psf/requests"
     ) == "https://api.github.com/repos/psf/requests"
@@ -40,7 +40,7 @@ def test_ordered_backends_override():
 
 
 def test_compliance_domain_deny():
-    from reach_enterprise.compliance import DomainPolicy
+    from fetchbridge.compliance import DomainPolicy
     policy = DomainPolicy(deny=("blocked.com",))
     verdict = policy.evaluate("https://blocked.com/page")
     assert not verdict.allowed

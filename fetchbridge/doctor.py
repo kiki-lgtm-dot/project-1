@@ -5,8 +5,8 @@ from __future__ import annotations
 
 import json
 
-from reach_enterprise.channels import get_all_channels
-from reach_enterprise.config import Config
+from fetchbridge.channels import get_all_channels
+from fetchbridge.config import Config
 
 
 def check_all(config: Config) -> dict:
@@ -26,7 +26,7 @@ def check_all(config: Config) -> dict:
 
 
 def format_report(results: dict) -> str:
-    lines = ["Reach Enterprise 状态", "=" * 40]
+    lines = ["FetchBridge 状态", "=" * 40]
     for name, r in results.items():
         icon = {"ok": "✅", "warn": "⚠️", "off": "❌", "error": "❌"}.get(r["status"], "?")
         lines.append(f"{icon} {r['name']} — {r['message']}")

@@ -1,4 +1,4 @@
-# Reach Enterprise
+# FetchBridge
 
 企业级多平台数据获取框架（MVP / P1 试点版）。
 
@@ -26,7 +26,7 @@
 
 ```
 ┌──────────────────────────────────────────────┐
-│  ReachEngine（引擎）  路由 · 限频 · 审计        │
+│  FetchBridge（引擎）  路由 · 限频 · 审计        │
 ├──────────────────────────────────────────────┤
 │  Channel（渠道）  web / github / rss …         │  ← 一平台一模块，统一契约
 ├──────────────────────────────────────────────┤
@@ -40,7 +40,7 @@
 ## 目录结构
 
 ```
-reach_enterprise/
+fetchbridge/
 ├── core.py        引擎（路由 + 抓取 + 审计 + 限频）
 ├── base.py        Channel / Backend 抽象契约
 ├── models.py      统一数据模型（FetchRequest / FetchResult / ComplianceInfo）
@@ -63,12 +63,12 @@ reach_enterprise/
 pip install -e .
 
 # 体检（看每个平台当前状态与在用后端）
-reach-enterprise doctor
-reach-enterprise doctor --json
+fetchbridge doctor
+fetchbridge doctor --json
 
 # 抓取
-reach-enterprise fetch https://github.com/psf/requests --json
-reach-enterprise fetch https://example.com/article --platform web --json
+fetchbridge fetch https://github.com/psf/requests --json
+fetchbridge fetch https://example.com/article --platform web --json
 
 # 运行测试
 pip install -e '.[dev]'

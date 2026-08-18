@@ -1,11 +1,11 @@
 [project]
-name = "reach-enterprise"
+name = "fetchbridge"
 version = "0.1.0"
 description = "企业级多平台数据获取框架 —— 官方 API 优先、多后端路由、体检、审计、合规过滤"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
-authors = [{ name = "Reach Enterprise Contributors" }]
+authors = [{ name = "FetchBridge Contributors" }]
 keywords = [
     "data-fetching", "router", "official-api", "audit",
     "compliance", "multi-backend", "health-check",
@@ -28,11 +28,11 @@ dependencies = []
 dev = ["pytest>=7.0"]
 
 [project.scripts]
-reach-enterprise = "reach_enterprise.cli:main"
+fetchbridge = "fetchbridge.cli:main"
 
 [build-system]
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["reach_enterprise*"]
+include = ["fetchbridge*"]

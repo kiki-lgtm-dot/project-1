@@ -7,12 +7,12 @@ import urllib.error
 import urllib.request
 from typing import Callable, Optional
 
-from reach_enterprise.models import ProbeResult
+from fetchbridge.models import ProbeResult
 
 
 def probe_http(url: str, timeout: int = 5, headers: Optional[dict] = None) -> ProbeResult:
     """用一次真实 HTTP 请求探测后端健康。"""
-    req = urllib.request.Request(url, headers=headers or {"User-Agent": "reach-enterprise/0.1"})
+    req = urllib.request.Request(url, headers=headers or {"User-Agent": "fetchbridge/0.1"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             if 200 <= resp.status < 400:

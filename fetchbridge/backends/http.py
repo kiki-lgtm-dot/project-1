@@ -5,13 +5,13 @@ from __future__ import annotations
 
 import urllib.request
 
-from reach_enterprise.base import Backend, TIER_SELF_BUILT
-from reach_enterprise.config import Config
-from reach_enterprise.models import ComplianceInfo, FetchRequest, FetchResult, ProbeResult
-from reach_enterprise.probe import probe_http
+from fetchbridge.base import Backend, TIER_SELF_BUILT
+from fetchbridge.config import Config
+from fetchbridge.models import ComplianceInfo, FetchRequest, FetchResult, ProbeResult
+from fetchbridge.probe import probe_http
 
 # 合规最佳实践：明确的 UA 与联系方式，便于站点方识别与联系
-_DEFAULT_UA = "reach-enterprise/0.1 (+https://github.com/kiki-lgtm-dot/project-1)"
+_DEFAULT_UA = "fetchbridge/0.1 (+https://github.com/kiki-lgtm-dot/project-1)"
 
 
 class HttpBackend(Backend):
