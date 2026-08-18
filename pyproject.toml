@@ -1,0 +1,38 @@
+[project]
+name = "reach-enterprise"
+version = "0.1.0"
+description = "企业级多平台数据获取框架 —— 官方 API 优先、多后端路由、体检、审计、合规过滤（参考 Agent Reach 架构重写）"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Enterprise Team" }]
+keywords = [
+    "data-fetching", "router", "official-api", "audit",
+    "compliance", "multi-backend", "health-check",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+# 刻意零第三方依赖：标准库即可运行，便于企业安全审计
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+reach-enterprise = "reach_enterprise.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["reach_enterprise*"]
