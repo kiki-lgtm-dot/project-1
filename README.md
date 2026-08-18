@@ -2,9 +2,9 @@
 
 企业级多平台数据获取框架（MVP / P1 试点版）。
 
-参考开源项目 [Agent Reach](https://github.com/Panniantong/agent-reach) 的架构思想（多后端路由 + 真实探活 + 体检），按「官方 API 优先、凭据零明文、全程审计、合规过滤」的企业要求重写。
+以「官方 API 优先、凭据零明文、全程审计、合规过滤」为核心设计，提供多后端路由、真实探活与统一数据出口，供企业内部数据获取系统集成。
 
-> ⚠️ **本仓库是 MVP 骨架，不是完整产品。** 完整落地需按下方「路线图」分阶段推进。
+> ⚠️ **本仓库是 MVP 骨架，不是完整产品。** 生产落地需补齐的项见 [docs/enterprise-gaps.md](docs/enterprise-gaps.md)（含低成本、稳定方案）。
 
 ---
 
@@ -109,8 +109,13 @@ pytest tests/ -v
 | 阶段 | 内容 | 状态 |
 |------|------|------|
 | P1 试点 | 框架骨架 + web/github/rss 三渠道 + 审计 + 合规 | ✅ 本仓库 |
-| P2 生产化 | 接密钥系统（Vault/KMS）、监控告警、内部制品库、限频增强 | ⏳ 待做 |
+| P2 生产化 | 接密钥系统、监控告警、限频增强、完整合规解析 | ⏳ 待做（见 [docs/enterprise-gaps.md](docs/enterprise-gaps.md)） |
 | P3 扩展 | 按需接更多平台（一律官方 API 优先） | ⏳ 待做 |
+
+## 企业落地待办
+
+MVP 未覆盖、需企业自行补充的部分（密钥管理、PII 识别、监控、调度等），
+每一项的低成本、稳定解决方案详见 **[docs/enterprise-gaps.md](docs/enterprise-gaps.md)**。
 
 ## License
 

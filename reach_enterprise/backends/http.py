@@ -11,7 +11,7 @@ from reach_enterprise.models import ComplianceInfo, FetchRequest, FetchResult, P
 from reach_enterprise.probe import probe_http
 
 # 合规最佳实践：明确的 UA 与联系方式，便于站点方识别与联系
-_DEFAULT_UA = "reach-enterprise/0.1 (+https://github.com/your-org/reach-enterprise)"
+_DEFAULT_UA = "reach-enterprise/0.1 (+https://github.com/kiki-lgtm-dot/project-1)"
 
 
 class HttpBackend(Backend):
